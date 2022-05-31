@@ -16,4 +16,23 @@
     }
 }
 
+- (void) redirectConsoleLogToDocumentFolder
+{
+       NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                    NSUserDomainMask, YES);
+       NSString *documentsDirectory = [paths objectAtIndex:0];
+       NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"MYAPP-LOGS.log"];
+        freopen([logPath fileSystemRepresentation],"a+",stderr);
+}
+
+- (void) pluginInitialize
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+}
+
+- (void) finishLaunching:(NSNotification *)notification
+{
+    [self redirectConsoleLogToDocumentFolder];
+}
+
 @end
