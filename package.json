@@ -1,0 +1,25 @@
+{
+  "name": "cordova-plugin-logger",
+  "version": "0.0.1",
+  "description": "Cordova plugin used to store logs permantly",
+  "cordova": {
+    "id": "cordova-plugin-logger",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fgarciaand/cordova-plugin-logger.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Fabricio Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fgarciaand/cordova-plugin-logger/issues"
+  },
+  "homepage": "https://github.com/fgarciaand/cordova-plugin-logger#readme"
+}
