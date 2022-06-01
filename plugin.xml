@@ -10,7 +10,6 @@
         <config-file parent="/*" target="config.xml">
             <feature name="CDVLogger">
                 <param name="ios-package" value="CDVLogger" />
-                <param name="onload" value="true" />
             </feature>
         </config-file>
         <header-file src="src/ios/CDVLogger.h" />

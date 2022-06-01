@@ -3,36 +3,30 @@
 
 @implementation CDVLogger
 
+- (void)write:(NSString *)message
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [paths objectAtIndex:0];
+
+    NSString *pathFile = [NSString stringWithFormat:@"%@/myapp_log.txt", docPath];
+    NSString* content = [NSString stringWithContentsOfFile:pathFile
+                                                encoding:NSUTF8StringEncoding
+                                                    error:NULL];
+    NSString* newContent = [NSString stringWithFormat:@"%@\n%@", content,message];
+    NSError *error = nil;
+    [newContent writeToFile:pathFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    content = [NSString stringWithContentsOfFile:pathFile
+                                                encoding:NSUTF8StringEncoding
+                                                    error:NULL];
+    NSLog(@"%@", content);
+}
+
+
 /* log a message */
 - (void)logLevel:(CDVInvokedUrlCommand*)command
 {
-    id level = [command argumentAtIndex:0];
-    id message = [command argumentAtIndex:1];
-
-    if ([level isEqualToString:@"LOG"]) {
-        NSLog(@"%@", message);
-    } else {
-        NSLog(@"%@: %@", level, message);
-    }
-}
-
-- (void) redirectConsoleLogToDocumentFolder
-{
-       NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                    NSUserDomainMask, YES);
-       NSString *documentsDirectory = [paths objectAtIndex:0];
-       NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"MYAPP-LOGS.log"];
-        freopen([logPath fileSystemRepresentation],"a+",stderr);
-}
-
-- (void) pluginInitialize
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
-}
-
-- (void) finishLaunching:(NSNotification *)notification
-{
-    [self redirectConsoleLogToDocumentFolder];
+    id message = [command argumentAtIndex:0];
+    [self write:message];
 }
 
 @end
