@@ -14,7 +14,7 @@ const Logger = {
                 resolve(result);
             }, function(error) {
                 reject(error);
-            }, PLUGIN_NAME, 'logLevel', [level, message]);
+            }, PLUGIN_NAME, 'logLevel', [message]);
         });
     },
 }

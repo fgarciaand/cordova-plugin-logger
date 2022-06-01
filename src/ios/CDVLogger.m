@@ -3,7 +3,7 @@
 
 @implementation CDVLogger
 
-- (void)write:(NSString *)message
+- (void)writeLogToFile:(NSString *)message
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docPath = [paths objectAtIndex:0];
@@ -26,7 +26,7 @@
 - (void)logLevel:(CDVInvokedUrlCommand*)command
 {
     id message = [command argumentAtIndex:0];
-    [self write:message];
+    [self writeLogToFile:message];
 }
 
 @end
