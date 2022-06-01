@@ -8,11 +8,11 @@
     </js-module>
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
-            <feature name="CDVLogger">
-                <param name="ios-package" value="CDVLogger" />
+            <feature name="CDVCustomLogger">
+                <param name="ios-package" value="CDVCustomLogger" />
             </feature>
         </config-file>
-        <header-file src="src/ios/CDVLogger.h" />
-        <source-file src="src/ios/CDVLogger.m" />
+        <header-file src="src/ios/CDVCustomLogger.h" />
+        <source-file src="src/ios/CDVCustomLogger.m" />
     </platform>
 </plugin>

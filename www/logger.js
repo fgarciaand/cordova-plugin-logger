@@ -1,9 +1,9 @@
-const PLUGIN_NAME = 'CDVLogger';
+const PLUGIN_NAME = 'CDVCustomLogger';
 var exec = require('cordova/exec');
 
 const Logger = {
     /**
-     * @function log (logLevel)
+     * @function log (logMessage)
      * @description función para escribir mensajes en el log indicando el nivel
      * @param {message} [String] - Mensaje
      * @returns {Promise} - Devuelve una promesa con resultado.
@@ -14,7 +14,7 @@ const Logger = {
                 resolve(result);
             }, function(error) {
                 reject(error);
-            }, PLUGIN_NAME, 'logLevel', [message]);
+            }, PLUGIN_NAME, 'logMessage', [message]);
         });
     },
 }

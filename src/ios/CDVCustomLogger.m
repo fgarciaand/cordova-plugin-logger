@@ -1,7 +1,7 @@
-#import "CDVLogger.h"
+#import "CDVCustomLogger.h"
 #import <Cordova/CDV.h>
 
-@implementation CDVLogger
+@implementation CDVCustomLogger
 
 - (void)writeLogToFile:(NSString *)message
 {
@@ -23,7 +23,7 @@
 
 
 /* log a message */
-- (void)logLevel:(CDVInvokedUrlCommand*)command
+- (void)logMessage:(CDVInvokedUrlCommand*)command
 {
     id message = [command argumentAtIndex:0];
     [self writeLogToFile:message];
